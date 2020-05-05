@@ -26,7 +26,44 @@ export class AppComponent {
   @ViewChild(CdkDropListGroup) listGroup: CdkDropListGroup<CdkDropList>;
   @ViewChild(CdkDropList) placeholder: CdkDropList;
 
-  public items: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  public movies: any[] = [
+    {
+      title: 'Episode I - The Phantom Menace',
+      poster: './assets/images/episode_1.jpg'
+    },
+    {
+      title: 'Episode II - Attack of the Clones',
+      poster: './assets/images/episode_2.jpg'
+    },
+    {
+      title: 'Episode III - Revenge of the Sith',
+      poster: './assets/images/episode_3.jpg'
+    },
+    {
+      title: 'Episode IV - A New Hope',
+      poster: './assets/images/episode_4.jpg'
+    },
+    {
+      title: 'Episode V - The Empire Strikes Back',
+      poster: './assets/images/episode_5.jpg'
+    },
+    {
+      title: 'Episode VI - Return of the Jedi',
+      poster: './assets/images/episode_6.jpg'
+    },
+    {
+      title: 'Episode VII - The Force Awakens',
+      poster: './assets/images/episode_7.jpg'
+    },
+    {
+      title: 'Episode VIII - The Last Jedi',
+      poster: './assets/images/episode_8.jpg'
+    },
+    {
+      title: 'Episode IX – The Rise of Skywalker',
+      poster: './assets/images/episode_9.jpg'
+    }
+  ];
 
   public target: CdkDropList;
   public targetIndex: number;
@@ -34,6 +71,7 @@ export class AppComponent {
   public sourceIndex: number;
   public dragIndex: number;
   public activeContainer;
+  public columns: number = 5;
 
   constructor(private viewportRuler: ViewportRuler) {
     this.target = null;
@@ -47,12 +85,12 @@ export class AppComponent {
     phElement.parentElement.removeChild(phElement);
   }
 
-  add() {
-    this.items.push(this.items.length + 1);
+  formatLabel(value: number) {
+    return value;
   }
 
   shuffle() {
-    this.items.sort(() => .5 - Math.random());
+    this.movies.sort(() => .5 - Math.random());
   }
 
   dragMoved(e: CdkDragMove) {
@@ -66,6 +104,7 @@ export class AppComponent {
     });
   }
 
+  // TODO: update this logic for grid
   dropListDropped(event: any) {
     if (!this.target)
       return;
@@ -83,7 +122,7 @@ export class AppComponent {
     this.source = null;
 
     if (this.sourceIndex != this.targetIndex) {
-      moveItemInArray(this.items, this.sourceIndex, this.targetIndex);
+      moveItemInArray(this.movies, this.sourceIndex, this.targetIndex);
     }
   }
 

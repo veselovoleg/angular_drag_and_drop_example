@@ -17,23 +17,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  min-width: 600px;
-  max-width: 900px;
+  //width: 900px;
 }
 
 .example-box {
   width: 200px;
-  height: 200px;
+  height: 300px;
   border: solid 1px #ccc;
-  font-size: 30pt;
+  padding: 4px;
+  font-size: 14pt;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   cursor: move;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   text-align: center;
-  background: #fff;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 4px;
   position: relative;
   z-index: 1;
